@@ -5,5 +5,6 @@ module.exports = React.createClass
     {data, query} = @props
 
     <div className="container">
-      <h1>Hello!</h1>
+      <h1>Purple Monkey Dishwasher!</h1>
+      <p>Some text to test</p>
     </div>
