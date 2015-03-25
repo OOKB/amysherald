@@ -1,0 +1,35 @@
+{
+  "name": "react-starter",
+  "homepage": "https://www.cape.io",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cape-io/react-starter"
+  },
+  "author": "Team CAPE.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cape-io/react-starter/issues"
+  },
+  "main": "app/app.cjsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "3.x",
+    "react": "0.13.x",
+    "react-bootstrap": "0.x",
+    "react-router": "0.x",
+    "react-router-bootstrap": "0.x",
+    "superagent": "0.x",
+    "moment": "2.x",
+    "ampersand-state": "4.x",
+    "ampersand-collection": "1.x"
+  },
+  "devDependencies": {
+    "cape-gulp": "git+https://github.com/cape-io/cape-gulp.git",
+    "gulp": "3.x",
+    "coffee-script": "1.x"
+  }
+}
