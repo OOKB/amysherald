@@ -4,10 +4,11 @@ _ = require 'lodash'
 Wufoo = require './wufoo'
 SlideShow = require './slideshow'
 ImageGrid = require './imageGrid'
+Quote = require './quote'
 
 module.exports = React.createClass
   render: ->
-    {content, title, images, imageSettings, dir, wufoo, contents, display} = @props
+    {content, title, images, imageSettings, dir, wufoo, contents, display, quote} = @props
     if images
       if imageSettings
         {slideDuration, width, display} = imageSettings
@@ -27,6 +28,7 @@ module.exports = React.createClass
     <div className="page">
       { if title then <h1>{title}</h1> }
       { SlideShowEl }
+      { if quote then React.createElement(Quote, quote) }
       { if content
           <div className="content" dangerouslySetInnerHTML={ __html: content }/>
       }
