@@ -130,6 +130,8 @@ header {
 main {
   margin-left: 300px;
   padding-top: 80px;
+  padding-right: 2em;
+  max-width: 50em;
 
 /*
   p:first-child:first-letter {
@@ -152,11 +154,10 @@ main {
     }
 
     .image {
-      padding: 1em;
+      margin: 0 1em;
       display: block;
       float: left;
       position: relative;
-      width: ~'calc(300px + 2em)';
 
       .info {
         h2 {
@@ -172,6 +173,16 @@ main {
     }
   }
 
+}
+
+/* Text pages
+   ==================================== */
+
+div.quote {
+  border-top: 1px solid @ookbpink;
+  border-bottom: 1px solid @ookbpink;
+  margin-bottom: 1.5em;
+  padding-top: 1em ;
 }
 
 /* footer
