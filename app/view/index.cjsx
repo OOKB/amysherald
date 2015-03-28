@@ -10,7 +10,7 @@ module.exports = React.createClass
     router: React.PropTypes.func.isRequired
   }
   render: ->
-    {db, title, sha, sections, section, workIndex, archiveYears, currentYear} = @props
+    {db, title, sha, sections, section, workIndex, archiveYears, currentYear, theme} = @props
     {primaryMenu, author, description, startYear, wufoo, homepageId} = db
 
     appFileName = sha or 'app'
@@ -51,7 +51,9 @@ module.exports = React.createClass
           pageData = {}
       if pageId is 'contact' and wufoo
         pageData.wufoo = wufoo
-
+      if theme
+        pageData.theme = theme
+        pageData.display = theme?.display?[pageId] or theme.defaultDisplay
     if pageData?.title
       pageTitle = title + ' | ' + pageData.title
 

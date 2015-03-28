@@ -1,6 +1,7 @@
 React = require 'react'
 {Link} = require 'react-router'
 _ = require 'lodash'
+Qs = require 'qs'
 
 Menu = require './menu'
 
@@ -9,11 +10,17 @@ Image = React.createClass
     router: React.PropTypes.func.isRequired
   }
   render: ->
-    {id, filename, i} = @props
-    imgUrl = "http://ezle.imgix.net/#{id}?w=300&h=300&fit=crop"
+    {id, filename, i, width, height, crop, domain} = @props
+    domain = domain or 'ezle.imgix.net'
+    if !width and !height
+      width = 500
+    url = "//#{domain}/#{id}"
+    if width or height or crop
+      url += "?" + Qs.stringify({ h: height, w: width, fit: crop })
+
     path = @context.router.getCurrentPathname()
     <Link to={path} query={i:i} role="button" activeClassName="" className="">
-      <img className="small" src={imgUrl} alt={filename} />
+      <img className="small" src={url} alt={filename} />
     </Link>
 
 ImageDetail = React.createClass
@@ -66,7 +73,7 @@ module.exports = React.createClass
     @setState isMounted: true
 
   render: ->
-    {images} = @props
+    {images, width, height, fit, domain} = @props
     {isMounted} = @state
     {i} = @context.router.getCurrentQuery()
     i = parseInt(i)
@@ -81,7 +88,14 @@ module.exports = React.createClass
         Text = React.createElement(ImageText, image)
       className = if sold then "image sold" else "image"
       <li className={className} key={rev} >
-        <Image id={id} filename={filename} i={index} />
+        <Image
+          id={id}
+          filename={filename}
+          i={index}
+          height={height}
+          width={width}
+          domain={domain}
+        />
         {Text}
         {Detail}
       </li>

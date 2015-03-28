@@ -8,7 +8,7 @@ Quote = require './quote'
 
 module.exports = React.createClass
   render: ->
-    {content, title, images, imageSettings, dir, wufoo, contents, display, quote} = @props
+    {content, title, images, imageSettings, dir, wufoo, contents, display, quote, theme} = @props
     if images
       if imageSettings
         {slideDuration, width, display} = imageSettings
@@ -23,7 +23,9 @@ module.exports = React.createClass
         />
     if contents
       if display is 'imageGrid' or true
-        Grid = <ImageGrid images={contents} sourceType="contents" />
+        if theme?.imageGrid
+          {height, fit, width} = theme.imageGrid
+        Grid = <ImageGrid images={contents} height={height} width={width} fit={fit} />
 
     <div className="page">
       { if title then <h1>{title}</h1> }
