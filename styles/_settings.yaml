@@ -1,0 +1,4 @@
+---
+  defaultDisplay: imageGrid
+  imageGrid:
+    height: 300
