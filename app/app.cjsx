@@ -13,9 +13,10 @@ App = (data, render, onError, onAbort) ->
   if not data.path then data.path = '/'
   # Process the initial data. (index.json)
   data = processData(data)
-
+  console.log 'Init react with data.'
   Render = (Handler) ->
     # This is the default props sent to the Index view.
+    #console.log React.renderToStaticMarkup(React.createElement(Handler, data))
     render Handler, data
 
   if inBrowser
@@ -43,6 +44,5 @@ if inBrowser
         return console.error err or res
       # Trigger render.
       App res.body, render
-      console.log 'Init react with data.'
 
 module.exports = App
