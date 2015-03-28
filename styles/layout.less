@@ -131,6 +131,7 @@ main {
   margin-left: 300px;
   padding-top: 80px;
 
+/*
   p:first-child:first-letter {
     display: block;
     float: left;
@@ -139,14 +140,35 @@ main {
     margin: 8px 0 0 0;
     line-height: 40px;
   }
+*/
 
   .image-grid {
     list-style: none;
     margin: 0;
     padding: 0;
 
+    &::after {
+      .clearfix;
+    }
+
     .image {
-      display: inline-block;
+      padding: 1em;
+      display: block;
+      float: left;
+      position: relative;
+      width: ~'calc(300px + 2em)';
+
+      .info {
+        h2 {
+          font-size: 1.25em;
+        }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
     }
   }
 
@@ -160,9 +182,11 @@ footer {
   font-family: Monaco, "Courier New", Courier, monospace;
   margin-top: 90px;
   margin-left: 300px;
+  padding-bottom: 1.5em;
 
   p {
     font-size: .75rem;
     margin-top: .5em;
+    font-family: Monaco, "Courier New", Courier, monospace;
   }
 }
