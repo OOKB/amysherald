@@ -35,3 +35,39 @@
      -moz-border-radius: @radius;
           border-radius: @radius;
 }
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.clearleft {
+  clear: left;
+}
+.clearright {
+  clear: right;
+}
+
+/*** Colors, etc. ***/
+
+@ookbgray:        rgba(132, 132, 120, 1);
+@ookbbrown:       rgba(46, 41, 38, 1);
+@ookbpink:        rgba(236, 64, 121, 1);
+
+/*** type stuff ***/
+@font-face {
+  font-family: 'AWConquerorDidotLight';
+  src: url('http://fonts.ookb.co/ff/awconquerer/awconquerordidot-light-webfont.eot');
+  src: local('☺'),
+       url('http://fonts.ookb.co/ff/awconquerer/awconquerordidot-light-webfont.woff') format('woff'),
+       url('http://fonts.ookb.co/ff/awconquerer/awconquerordidot-light-webfont.ttf') format('truetype'),
+       url('http://fonts.ookb.co/ff/awconquerer/awconquerordidot-light-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@awconquerer-stack: 'AWConquerorDidotLight', Georgia, serif;
