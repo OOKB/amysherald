@@ -4,10 +4,10 @@ Menu = require './menu'
 
 module.exports = React.createClass
   render: ->
-    {primaryMenu} = @props
+    {primaryMenu, title} = @props
 
     <header>
-      <Link to="/"><h1>Laura Hudson</h1></Link>
+      <Link to="/"><h1>{title}</h1></Link>
       <nav>
         <Menu menu={primaryMenu} />
       </nav>

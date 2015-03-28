@@ -66,7 +66,7 @@ module.exports = React.createClass
       </head>
       <body>
         <div className="container">
-          <Header primaryMenu={primaryMenu} />
+          <Header primaryMenu={primaryMenu} title={title} />
           <Main pageData={pageData} sections={sections} sectionsData={section} />
           <Footer currentYear={currentYear} startYear={startYear} title={title} />
         </div>
