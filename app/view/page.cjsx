@@ -3,7 +3,7 @@ _ = require 'lodash'
 
 Wufoo = require './wufoo'
 SlideShow = require './slideshow'
-ImageGrid = require './imageGrid'
+ImageGrid = require './imageGrid/imageGrid'
 Quote = require './quote'
 
 module.exports = React.createClass
@@ -24,8 +24,10 @@ module.exports = React.createClass
     if contents
       if display is 'imageGrid' or true
         if theme?.imageGrid
-          {height, fit, width} = theme.imageGrid
-        Grid = <ImageGrid images={contents} height={height} width={width} fit={fit} />
+          gridProps = _.merge theme.imageGrid, {images: contents}
+        else
+          gridProps = {images: contents}
+        Grid = React.createElement(ImageGrid, gridProps)
 
     <div className="page">
       { if title then <h1>{title}</h1> }

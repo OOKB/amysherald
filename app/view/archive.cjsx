@@ -1,5 +1,5 @@
 React = require 'react'
-ImageGrid = require './imageGrid'
+ImageGrid = require './imageGrid/imageGrid'
 
 module.exports = React.createClass
   render: ->
