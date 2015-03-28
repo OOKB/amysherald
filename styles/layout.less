@@ -159,6 +159,19 @@ main {
       float: left;
       position: relative;
 
+      &.sold::after {
+        background: transparent url('/media/sold.png') right top no-repeat;
+        content: '';
+        display: block;
+        height: 15px;
+        width: 56px;
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right:-15px;
+        transform: rotate(22.5deg);
+      }
+
       .info {
         h2 {
           font-size: 1.25em;
