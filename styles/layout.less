@@ -1,0 +1,168 @@
+* {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -ms-box-sizing:border-box;
+  box-sizing:border-box;
+  font-family:Georgia,serif;
+  /* xtra type stuff */
+  word-wrap:break-word;
+  -moz-font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+  -ms-font-feature-settings: "kern";
+  -o-font-feature-settings: "kern";
+  font-feature-settings: "kern";
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: @ookbgray;
+  color: @ookbbrown;
+  font: 1em/1.625em Georgia, serif;
+  font-size-adjust: none;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+}
+
+p {
+  font-weight: normal;
+  padding: 0 0  0.8125em 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  text-decoration: underline;
+}
+a.active {
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6, h1#sitename {
+  font-weight: normal;
+  font-style: normal;
+  font-family: @awconquerer-stack;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.765em;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.765em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.956em;
+}
+h4 {
+  font-size: 1.24em;
+  margin-bottom: 1.161em;
+}
+h5, h6 {
+  font-size: 1.1em;
+  margin-bottom: 1.238em;
+}
+
+/* Header / Sidenav
+   ==================================== */
+
+header {
+  background: @ookbbrown;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 275px;
+  z-index: 10;
+  padding: 80px 20px 20px;
+
+  h1,
+  a h1 {
+    font-weight: normal;
+  }
+
+  nav {
+    ul {
+      border-top: 1px solid @ookbpink;
+      border-bottom: 1px solid @ookbpink;
+      margin: 1em 0;
+      padding: 1em 0;
+      list-style: none;
+
+      h2 {display: none;}
+
+      li {
+        a {
+          color: @ookbgray;
+          font-family: Helvetica, Arial, sans-serif;
+          font-size: 1.5em;
+          line-height: 1.66;
+          text-decoration: none;
+
+          &:hover,
+          &:active,
+          &.active {
+            color:white;
+            text-decoration: none;
+          }
+
+          &.active::before {
+            content: '» '
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* Pages and stuff
+   ==================================== */
+
+main {
+  margin-left: 300px;
+  padding-top: 80px;
+
+  p:first-child:first-letter {
+    display: block;
+    float: left;
+    font-family: @awconquerer-stack;
+    font-size: 100px;
+    margin: 8px 0 0 0;
+    line-height: 40px;
+  }
+
+  .image-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .image {
+      display: inline-block;
+    }
+  }
+
+}
+
+/* footer
+   ==================================== */
+
+footer {
+  border-top: 1px solid rgb(46, 41, 38);
+  font-family: Monaco, "Courier New", Courier, monospace;
+  margin-top: 90px;
+  margin-left: 300px;
+
+  p {
+    font-size: .75rem;
+    margin-top: .5em;
+  }
+}
