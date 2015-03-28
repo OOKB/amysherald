@@ -12,6 +12,9 @@ module.exports = (data) ->
   archiveYears = {}
 
   if db.work?.contents
+    {archiveMenu} = db.work
+    unless archiveMenu is false
+      archiveMenu = true
     data.workIndex = {}
     # Loop through everything in the work folder.
     _.each db.work.contents, (project, i) ->
@@ -32,7 +35,7 @@ module.exports = (data) ->
           link: filename
         }
       # Build archive indexBy years.
-      if year
+      if year and archiveMenu
         unless data.section['archive']
           data.section.archive = []
           data.sections.push 'archive'
