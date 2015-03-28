@@ -38,9 +38,15 @@ ImageDetail = React.createClass
 
 ImageText = React.createClass
   render: ->
-    {title} = @props
+    {title, collection, content} = @props
     <div className="info">
       {if title then <h2>{title}</h2>}
+      <ul className="details">
+        {if collection then <li className="collection">{collection}</li>}
+      </ul>
+      { if content
+          <div className="content" dangerouslySetInnerHTML={ __html: content }/>
+      }
     </div>
 
 module.exports = React.createClass
