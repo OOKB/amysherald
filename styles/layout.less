@@ -75,14 +75,7 @@ h5, h6 {
 
 header {
   background: @ookbbrown;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 275px;
-  z-index: 10;
-  padding: 80px 20px 20px;
+  padding: 1em 2em;
 
   h1,
   a h1 {
@@ -123,24 +116,26 @@ header {
   }
 }
 
+@media (min-width: 50em) {
+  header {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 275px;
+    z-index: 10;
+    padding: 80px 20px 20px;
+  }
+}
 
 /* Pages and stuff
    ==================================== */
 
 main {
-  margin-left: 300px;
-  padding-top: 80px;
-
-/*
-  p:first-child:first-letter {
-    display: block;
-    float: left;
-    font-family: @awconquerer-stack;
-    font-size: 100px;
-    margin: 8px 0 0 0;
-    line-height: 40px;
-  }
-*/
+  max-width: 50em;
+  padding-left: 2em;
+  padding-right: 2em;
 
   .image-grid {
     list-style: none;
@@ -152,15 +147,28 @@ main {
     }
 
     .image {
-      padding: 1em;
+      margin: 0 1em;
       display: block;
       float: left;
       position: relative;
-      width: ~'calc(300px + 2em)';
+
+      &.sold::after {
+        background: transparent url('/media/sold.png') right top no-repeat;
+        content: '';
+        display: block;
+        height: 15px;
+        width: 56px;
+        position: absolute;
+        z-index: 99;
+        top: 0;
+        right:-15px;
+        transform: rotate(22.5deg);
+      }
 
       .info {
         h2 {
           font-size: 1.25em;
+          margin-bottom: 0;
         }
         ul {
           list-style: none;
@@ -168,10 +176,55 @@ main {
           padding: 0;
         }
       }
-
     }
   }
+}
 
+
+@media (min-width: 50em) {
+  main {
+    margin-left: 300px;
+    padding-top: 80px;
+    padding-left: 0;
+    padding-right: 2em;
+
+  /*
+    p:first-child:first-letter {
+      display: block;
+      float: left;
+      font-family: @awconquerer-stack;
+      font-size: 100px;
+      margin: 8px 0 0 0;
+      line-height: 40px;
+    }
+  */
+
+  }
+}
+
+/* Text pages
+   ==================================== */
+
+div.quote {
+  border-top: 1px solid @ookbpink;
+  border-bottom: 1px solid @ookbpink;
+  margin-bottom: 1.5em;
+
+  p {
+    margin: 1em 0;
+    padding: 0 1.625em;
+    font-style: italic;
+
+    &.byline {
+      border-top: 1px solid @ookbpink;
+      padding-top: 1em;
+      font-size: .8em;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-style: normal;
+      letter-spacing: 1px;
+    }
+  }
 }
 
 /* footer
@@ -181,12 +234,19 @@ footer {
   border-top: 1px solid rgb(46, 41, 38);
   font-family: Monaco, "Courier New", Courier, monospace;
   margin-top: 90px;
-  margin-left: 300px;
-  padding-bottom: 1.5em;
+  padding: 2em;
 
   p {
     font-size: .75rem;
     margin-top: .5em;
     font-family: Monaco, "Courier New", Courier, monospace;
+  }
+}
+
+@media (min-width: 50em) {
+  footer {
+    margin-left: 300px;
+    padding: 0px;
+    padding-bottom: 1.5em;
   }
 }
