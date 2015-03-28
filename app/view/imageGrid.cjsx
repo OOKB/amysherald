@@ -36,6 +36,13 @@ ImageDetail = React.createClass
       <Link className="button right" to={path} query={i:nextIndex} role="button"> Next </Link>
     </div>
 
+ImageText = React.createClass
+  render: ->
+    {title} = @props
+    <div className="info">
+      {if title then <h2>{title}</h2>}
+    </div>
+
 module.exports = React.createClass
   contextTypes: {
     router: React.PropTypes.func.isRequired
@@ -53,13 +60,17 @@ module.exports = React.createClass
     i = parseInt(i)
     maxIndex = images.length - 1
     ImageEl = (image, index) =>
-      {id, filename, rev, images} = image
+      {id, filename, rev, images, title} = image
       if images
         {id, filename, rev} = images[0]
       if isMounted and i is index
         Detail = <ImageDetail id={id} filename={filename} i={i} maxIndex={maxIndex} />
+      if title
+        Text = React.createElement(ImageText, image)
+
       <li className="image" key={rev} >
         <Image id={id} filename={filename} i={index} />
+        {Text}
         {Detail}
       </li>
 
