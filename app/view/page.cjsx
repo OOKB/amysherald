@@ -3,10 +3,11 @@ _ = require 'lodash'
 
 Wufoo = require './wufoo'
 SlideShow = require './slideshow'
+ImageGrid = require './imageGrid'
 
 module.exports = React.createClass
   render: ->
-    {content, title, images, imageSettings, dir, wufoo} = @props
+    {content, title, images, imageSettings, dir, wufoo, contents, display} = @props
     if images
       if imageSettings
         {slideDuration, width, display} = imageSettings
@@ -19,6 +20,9 @@ module.exports = React.createClass
           baseDir={dir}
           width={width}
         />
+    if contents
+      if display is 'imageGrid' or true
+        Grid = <ImageGrid images={contents} sourceType="contents" />
 
     <div className="page">
       { if title then <h1>{title}</h1> }
@@ -26,5 +30,6 @@ module.exports = React.createClass
       { if content
           <div className="content" dangerouslySetInnerHTML={ __html: content }/>
       }
+      { Grid }
       { if wufoo then <Wufoo hash={wufoo.hash} subdomain={wufoo.subdomain} /> }
     </div>

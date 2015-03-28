@@ -53,7 +53,9 @@ module.exports = React.createClass
     i = parseInt(i)
     maxIndex = images.length - 1
     ImageEl = (image, index) =>
-      {id, filename, rev} = image
+      {id, filename, rev, images} = image
+      if images
+        {id, filename, rev} = images[0]
       if isMounted and i is index
         Detail = <ImageDetail id={id} filename={filename} i={i} maxIndex={maxIndex} />
       <li className="image" key={rev} >
