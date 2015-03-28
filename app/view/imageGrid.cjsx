@@ -38,11 +38,17 @@ ImageDetail = React.createClass
 
 ImageText = React.createClass
   render: ->
-    {title, collection, content} = @props
+    {title, collection, content, year, size, medium, height, width, sold} = @props
+    if height or width and not size
+      size = "#{height}\" × #{width}\""
+
     <div className="info">
       {if title then <h2>{title}</h2>}
       <ul className="details">
         {if collection then <li className="collection">{collection}</li>}
+        {if year then <li className="year">{year}</li>}
+        {if size then <li className="size">{size}</li>}
+        {if medium then <li className="medium">{medium}</li>}
       </ul>
       { if content
           <div className="content" dangerouslySetInnerHTML={ __html: content }/>
@@ -66,15 +72,15 @@ module.exports = React.createClass
     i = parseInt(i)
     maxIndex = images.length - 1
     ImageEl = (image, index) =>
-      {id, filename, rev, images, title} = image
+      {id, filename, rev, images, title, content, year, medium, sold} = image
       if images
         {id, filename, rev} = images[0]
       if isMounted and i is index
         Detail = <ImageDetail id={id} filename={filename} i={i} maxIndex={maxIndex} />
-      if title
+      if title or content or year or medium
         Text = React.createElement(ImageText, image)
-
-      <li className="image" key={rev} >
+      className = if sold then "image sold" else "image"
+      <li className={className} key={rev} >
         <Image id={id} filename={filename} i={index} />
         {Text}
         {Detail}
