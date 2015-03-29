@@ -8,27 +8,25 @@ Quote = require './quote'
 
 module.exports = React.createClass
   render: ->
-    {content, title, images, imageSettings, dir, wufoo, contents, display, quote, theme} = @props
-    if images
-      if imageSettings
-        {slideDuration, width, display} = imageSettings
-      unless slideDuration
-        slideDuration = 3500
-      SlideShowEl =
-        <SlideShow
-          images={images}
-          slideDuration={3500}
-          baseDir={dir}
-          width={width}
-        />
-    if contents
-      if display is 'imageGrid' or true
-        if theme?.imageGrid
-          gridProps = _.merge theme.imageGrid, {images: contents}
-        else
-          gridProps = {images: contents}
-        Grid = React.createElement(ImageGrid, gridProps)
-
+    {content, title, images, dir, wufoo, contents, display, quote, theme} = @props
+    if not theme then theme = {}
+    if display is 'slideShow' or display is 'slideshow'
+      if not theme.slideShow then theme.slideShow = {slideDuration: 3500}
+      displayProps = _.merge theme.slideShow, {
+        images: images or contents
+        baseDir: dir
+      }
+      console.log displayProps
+      SlideShowEl = React.createElement(SlideShow, displayProps)
+    else if display is 'imageGrid'
+      if not theme.imageGrid then theme.imageGrid = {}
+      displayProps = _.merge theme.imageGrid, {
+        images: images or contents
+        baseDir: dir
+      }
+      Grid = React.createElement(ImageGrid, displayProps)
+    else
+      console.log 'no display'
     <div className="page">
       { if title then <h1>{title}</h1> }
       { SlideShowEl }

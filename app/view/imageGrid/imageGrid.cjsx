@@ -25,19 +25,24 @@ module.exports = React.createClass
 
     @setState
       isMounted: true
-      imgDimensions: imgDimensions
+      imgDimensions: imgDimensions or []
 
   render: ->
-    {images, width, height, fit, domain, calculateWidth, calculateHeight, setContainerWidth} = @props
+    {images, width, height, fit, domain, calculateWidth, calculateHeight, setContainerWidth, baseDir} = @props
     {isMounted, imgDimensions} = @state
     {i} = @context.router.getCurrentQuery()
     i = parseInt(i)
     maxIndex = images.length - 1
 
     ImageEl = (image, index) =>
-      {id, filename, rev, images, title, content, year, medium, sold} = image
-      if images
-        {id, filename, rev} = images[0]
+      if _.isString image
+        key = index
+        id = if baseDir then baseDir + '/' + image
+      else
+        {id, filename, rev, images, title, content, year, medium, sold, key} = image
+        if images
+          {id, filename, rev} = images[0]
+      key = key or rev or id or i
       if isMounted and i is index
         Detail = <ImageDetail id={id} filename={filename} i={i} maxIndex={maxIndex} />
       if title or content or year or medium
@@ -48,7 +53,7 @@ module.exports = React.createClass
         if calculateWidth then style.width = imgDimensions[index].width
         if calculateHeight then style.height = imgDimensions[index].height
         dimensions = imgDimensions[index]
-      <li className={className} key={rev} style={style} >
+      <li className={className} key={key} style={style} >
         <Image
           id={id}
           filename={filename}
@@ -57,6 +62,7 @@ module.exports = React.createClass
           width={width}
           domain={domain}
           dimensions={dimensions}
+          fit={fit}
         />
         {Text}
         {Detail}

@@ -41,14 +41,14 @@ module.exports = React.createClass
   render: ->
     {currentIndex} = @state
     {images, baseDir} = @props
-
+    console.log 'slideShow'
     SlideEl = (props, i) ->
       if _.isString props
         key = i
         url = props
       else
-        {id, key, alt, filename, caption, url} = props
-        key = key or id or i
+        {id, key, alt, filename, caption, url, rev} = props
+        key = key or rev or id or i
       active = currentIndex is i
       if caption?.text
         caption = caption.text
