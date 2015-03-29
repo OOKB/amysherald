@@ -3,7 +3,6 @@ React = require 'react'
 
 Index = require './view/index'
 Page = require './view/page'
-Archive = require './view/archive'
 
 module.exports =
 
