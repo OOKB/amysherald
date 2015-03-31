@@ -18,10 +18,13 @@ module.exports = React.createClass
     {calculateWidth, calculateHeight, images} = @props
 
     if calculateWidth or calculateHeight
+      console.log 'calc'
       imageEls = document.querySelectorAll('.image-grid .image img')
       imgDimensions = _.map imageEls, (imgEl) ->
-        width: imgEl.clientWidth
-        height: imgEl.clientHeight
+        if imgEl.naturalWidth is 0
+          console.log 'Image not loaded yet.'
+        width: imgEl.clientWidth or 300
+        height: imgEl.clientHeight or 300
 
     @setState
       isMounted: true
@@ -75,7 +78,6 @@ module.exports = React.createClass
       else
         widthOfImages = (images.length + 4) * (width or height)
       style = {width: widthOfImages + paddingMargin}
-      console.log style
     <ul className="image-grid" style={style}>
       { _.map images, ImageEl }
     </ul>

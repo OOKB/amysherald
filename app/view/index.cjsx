@@ -54,7 +54,6 @@ module.exports = React.createClass
       if theme
         pageData.theme = theme
         pageData.display = theme?.display?[pageId] or theme.defaultDisplay
-        console.log pageData
     if pageData?.title
       pageTitle = title + ' | ' + pageData.title
 
